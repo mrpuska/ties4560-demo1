@@ -4,7 +4,7 @@ const CountryInfoService = require('./country-info-service');
 const IpLocationService = require('./ip-location-service')
 const app = express()
 const router = express.Router();
-const port = 3000
+const port = process.env.PORT || 3000
 
 const isTest = false
 
@@ -62,4 +62,6 @@ function invalidRequest(res, errorString){
 
 function validateIPaddress(ipaddress) {  
   return (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipaddress))
-} 
+}
+
+module.exports = router;

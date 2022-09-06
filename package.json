@@ -7,7 +7,7 @@
     "preview": "vite preview --port 4173",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "start-api": "node ./src/api/server.js"
+    "start-api": "NODE_ENV=production node .src/api/server.js"
   },
   "dependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.1.1",
