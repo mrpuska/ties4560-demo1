@@ -8,6 +8,9 @@
   let ip = ref("");
   var error = ref("")
 
+  /**
+   * Get client IP address from Cloudflare
+   */
   async function getClientIp(){
     let res = await fetch("https://www.cloudflare.com/cdn-cgi/trace");
     let text = await res.text();
@@ -18,9 +21,13 @@
     return null;
   }
 
+  /**
+   * Get country code by IP address
+   */
   async function getCountryByIp() {
-    if (ip){  
-      var res = await fetch('/api/lookup/' + ip.value)
+    if (ip){
+      console.log(import.meta.env.VITE_API_URL)
+      var res = await fetch(import.meta.env.VITE_API_URL + '/lookup/' + ip.value)
       var json = await res.json();
       if (!res.ok) {
         error.value = json.error;

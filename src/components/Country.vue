@@ -16,7 +16,7 @@ import {ref, watch} from 'vue';
   });
 
   async function fetchCountryInfo() {
-    let res = await fetch('/api/country/' + props.countryCode)
+    let res = await fetch(import.meta.env.VITE_API_URL + '/country/' + props.countryCode)
     countryInfo.value = await res.json()
   }
 
