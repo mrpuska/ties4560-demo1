@@ -45,13 +45,13 @@
 
 <template>
   <div class="info-container">
-    <span>IP address: </span> <input v-model="ip">
+    <span>IP address: </span> <input v-model="ip" placeholder="83.12.33.3">
     <div>
       <button @click="getClientIp">Get client IP</button>
       <button v-if="ip" @click="getCountryByIp">Get country by IP</button>
     </div>
 
-    <span>Country code: </span> <input v-model="countryISOcode">
+    <span>Country code: </span> <input v-model="countryISOcode" placeholder="PL">
   </div>
 
     <Country :countryCode="countryISOcode" />
@@ -62,12 +62,24 @@
 
   <button @click="ip = ''; ipCountryData = null; countryISOcode = ''">Clear</button>
 
-<div class="instructions">
-  <h3>Search by IP</h3>
-  <p>Type in an IP address and click "Get country by IP" to fetch a country by the given IP. Optionally you can fetch your client IP by clicking "Get client IP"</p>
-  <h3>Search by country code</h3>
-  <p>Type in a country code to fetch a country by a ISO country code.</p>
-</div>
+  <div class="instructions">
+    <hr>
+    <h1>Instructions</h1>
+    <h3>Search by IP</h3>
+    <p>Type in an IP address and click "Get country by IP" to fetch a country by the given IP. Optionally you can fetch your client IP by clicking "Get client IP"</p>
+    <h3>Search by country code</h3>
+    <p>Type in a country code to fetch a country by a ISO country code.</p>
+  </div>
+
+  <div class="information">
+    <hr>
+    <h3>Services used</h3>
+    <ul>
+      <li>Client ip: https://www.cloudflare.com/cdn-cgi/trace</li>
+      <li>IP to geo: https://ws.cdyne.com/ip2geo/ip2geo.asmx?WSDL</li>
+      <li>Country code to info: http://webservices.oorsprong.org/websamples.countryinfo/countryinfoservice.wso?WSDL</li>
+    </ul>
+  </div>
 
 </template>
 
@@ -77,6 +89,9 @@
   flex-direction: column;
 }
 .instructions{
+  margin-top: 2em;
+}
+.information{
   margin-top: 2em;
 }
 .error{
