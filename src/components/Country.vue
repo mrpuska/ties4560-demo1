@@ -13,6 +13,8 @@ import {ref, watch} from 'vue';
   watch(() => props.countryCode, async (newValue, oldValue) => {
     if(newValue != null && newValue.length > 1)
         await fetchCountryInfo();
+    else if (newValue != null && newValue.length == 0)
+      countryInfo.value = null;
   });
 
   async function fetchCountryInfo() {

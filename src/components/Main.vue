@@ -46,17 +46,28 @@
 <template>
   <div class="info-container">
     <span>IP address: </span> <input v-model="ip">
+    <div>
+      <button @click="getClientIp">Get client IP</button>
+      <button v-if="ip" @click="getCountryByIp">Get country by IP</button>
+    </div>
+
     <span>Country code: </span> <input v-model="countryISOcode">
   </div>
 
     <Country :countryCode="countryISOcode" />
 
-  <button @click="getClientIp">Get client IP</button>
-  <button v-if="ip" @click="getCountryByIp">Get country by IP</button>
-
   <div class="error">
     {{error}}
   </div>
+
+  <button @click="ip = ''; ipCountryData = null; countryISOcode = ''">Clear</button>
+
+<div class="instructions">
+  <h3>Search by IP</h3>
+  <p>Type in an IP address and click "Get country by IP" to fetch a country by the given IP. Optionally you can fetch your client IP by clicking "Get client IP"</p>
+  <h3>Search by country code</h3>
+  <p>Type in a country code to fetch a country by a ISO country code.</p>
+</div>
 
 </template>
 
@@ -65,7 +76,16 @@
   display: flex;
   flex-direction: column;
 }
+.instructions{
+  margin-top: 2em;
+}
 .error{
   color:red;
+}
+h2,h3{
+  font-weight: bold;
+}
+button {
+  margin: 0.5em 0.5em 0 0;
 }
 </style>
